@@ -18,3 +18,17 @@ describe(isNumber, () => {
     expect(result).toBe(false);
   });
 });
+
+const indexOfNumber = Extractor.indexOfNumber.name;
+describe(indexOfNumber, () => {
+  test(`성공 테스트`, () => {
+    const element = '//*\\n1';
+    const result = Extractor.indexOfNumber(element);
+    expect(result).toBe(5);
+  });
+  test(`성공 테스트`, () => {
+    const element = 'abcde1';
+    const result = Extractor.indexOfNumber(element);
+    expect(result).toBe(5);
+  });
+});
