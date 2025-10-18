@@ -51,3 +51,17 @@ describe(extractCustomPart, () => {
     expect(result).toBe('');
   });
 });
+
+const extractCustomDelimiter = Extractor.extractCustomDelimiter.name;
+describe(extractCustomDelimiter, () => {
+  test(`성공 테스트`, () => {
+    const element = '//*\\n1,2,3';
+    const result = Extractor.extractCustomDelimiter(element);
+    expect(result).toBe('*');
+  });
+  test(`성공 테스트`, () => {
+    const element = '1,2,3';
+    const result = Extractor.extractCustomDelimiter(element);
+    expect(result).toBe('1,2,3');
+  });
+});
