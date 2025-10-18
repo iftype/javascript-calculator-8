@@ -29,6 +29,14 @@ class Extractor {
       tailPatternIndex,
     );
   }
+
+  //숫자를 만나는 곳을 찾아 숫자부분 부터 끝까지 잘라낸다.
+  //숫자를 찾지 못했다면 받은 문자를 리턴한다
+  static extractExpressionPart(string) {
+    const findNum = this.indexOfNumber(string);
+    if (findNum === -1) return string;
+    return string.slice(findNum);
+  }
 }
 
 export default Extractor;
