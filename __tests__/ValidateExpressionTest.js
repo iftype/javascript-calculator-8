@@ -13,3 +13,11 @@ describe(vaildIsStartNumber, () => {
     expect(() => validator.vaildIsStartNumber()).not.toThrow();
   });
 });
+
+const vaildIsEndNumber = valid.vaildIsEndNumber.name;
+describe(vaildIsEndNumber, () => {
+  test('에러발생 테스트', () => {
+    const validator = new ValidateExpression('1,2,3,');
+    expect(() => validator.vaildIsEndNumber()).toThrow(Error);
+  });
+});
