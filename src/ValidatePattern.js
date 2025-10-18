@@ -39,6 +39,15 @@ class ValidatePattern {
     return this;
   }
 
+  // Extractor 활용해 구분자를 부분을 가져옴, 숫자인지 확인하고 (리팩토링때 utills로 뺴자)
+  // 숫자라면 구분자 지정 못하게함
+  validIsNumber() {
+    const customDelim = Extractor.extractCustomDelimiter(this.string);
+    if (Number.isInteger(Number(customDelim)))
+      throw new Error('숫자를 구분자로 지정할 수 없습니다');
+    return this;
+  }
+
   validate() {
     // 커스텀 파트가 없으면 검증할 필요 없음
     if (this.customPart.length === 0) return;
