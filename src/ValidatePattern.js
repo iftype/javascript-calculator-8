@@ -1,4 +1,5 @@
 import Pattern from './Pattern.js';
+import Extractor from './Extractor.js';
 
 //구분자 패턴 부분을 유효성 검사하는 클래스
 class ValidatePattern {
@@ -22,12 +23,19 @@ class ValidatePattern {
       throw new Error('두 번째 기준자를 잘못 입력하셨습니다.');
     return this;
   }
+  //Extractor 활용해 구분자부분을 가져옴, 값이 비었는지 검사
+  validIsBlank() {
+    if (Extractor.extractCustomDelimiter(this.customPart).length === 0)
+      throw new Error('커스텀 구분자가 비어았습니다');
+    return this;
+  }
+
   validate() {
     // 커스텀 파트가 없으면 검증할 필요 없음
     if (this.customPart.length === 0) return;
     //검사시작
     // this.validHeadPattern().validTailPattern();
-    this.validHeadPattern().validTailPattern();
+    this.validHeadPattern().validTailPattern().validIsBlank();
   }
 }
 export default ValidatePattern;
