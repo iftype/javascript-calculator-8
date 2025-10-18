@@ -23,6 +23,16 @@ class ValidateExpression {
   }
 
   //공백과 숫자로 이루어진 문자열을 분해하여 숫자인지 검증
+  // 공백이 두개나오면 특수문자가 연속 두 번 나온것
+  validMultipleDelim() {
+    const delimiter = new Delimiter();
+    const tokenList = delimiter.splitDelimExpression(this.expPart);
+    if (tokenList.join('').includes('  '))
+      throw new Error('구분자를 연속해서 사용했습니다');
+    return this;
+  }
+
+  //공백과 숫자로 이루어진 문자열을 분해하여 숫자인지 검증
   // 공백이 아닌 문자는 구분자 리스트에 없는 문자
   validIsInDelimList() {
     const delimiter = new Delimiter();
