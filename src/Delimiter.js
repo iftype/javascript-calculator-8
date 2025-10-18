@@ -7,6 +7,10 @@ class Delimiter {
   hasDelimiterString(delim) {
     return this.delimList.includes(delim);
   }
+  // 구분자 추가
+  addDelimiter(delim) {
+    this.delimList.push(delim);
+  }
 }
 
 export default Delimiter;
