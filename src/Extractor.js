@@ -6,6 +6,10 @@ class Extractor {
     if (element.trim() === '') return false;
     return Number.isSafeInteger(Number(element));
   }
+  //처음 숫자를 만나는 인덱스를 리턴
+  static indexOfNumber(string) {
+    return string.split('').findIndex((e) => this.isNumber(e));
+  }
 }
 
 export default Extractor;
