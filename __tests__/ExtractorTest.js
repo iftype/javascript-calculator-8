@@ -65,3 +65,17 @@ describe(extractCustomDelimiter, () => {
     expect(result).toBe('1,2,3');
   });
 });
+
+const extractExpressionPart = Extractor.extractExpressionPart.name;
+describe(extractExpressionPart, () => {
+  test(`성공 테스트`, () => {
+    const element = '//*\\n1,2,3';
+    const result = Extractor.extractExpressionPart(element);
+    expect(result).toBe('1,2,3');
+  });
+  test(`성공 테스트`, () => {
+    const element = '';
+    const result = Extractor.extractExpressionPart(element);
+    expect(result).toBe('');
+  });
+});
