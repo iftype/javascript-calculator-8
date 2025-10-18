@@ -79,3 +79,4 @@ describe(extractExpressionPart, () => {
     expect(result).toBe('');
   });
 });
+export default Extractor;
