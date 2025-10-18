@@ -4,7 +4,7 @@ const valid = new ValidatePattern();
 
 const validHeadPattern = valid.validHeadPattern.name;
 describe(validHeadPattern, () => {
-  test('실패 테스트', () => {
+  test('에러발생 테스트', () => {
     const validator = new ValidatePattern('/d\n');
     expect(() => validator.validHeadPattern()).toThrow(Error);
   });
@@ -16,9 +16,17 @@ describe(validHeadPattern, () => {
 
 const validTailPattern = valid.validTailPattern.name;
 describe(validTailPattern, () => {
-  test('실패 테스트', () => {
+  test('에러발생 테스트', () => {
     const validator = new ValidatePattern('//d\t1,2,3');
     expect(() => validator.validTailPattern()).toThrow(Error);
+  });
+});
+
+const validIsBlank = valid.validIsBlank.name;
+describe(validIsBlank, () => {
+  test('에러발생 테스트', () => {
+    const validator = new ValidatePattern('');
+    expect(() => validator.validIsBlank()).toThrow(Error);
   });
 });
 
