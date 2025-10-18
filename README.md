@@ -7,8 +7,7 @@
 ## 🚀기능 요구 사항
 
 > 입력한 문자열에서 숫자를 추출하여 더하는 계산기를 구현한다.
->
-> 
+
 - 쉼표(,) 또는 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환한다.
   - 예: `"" => 0`, `"1,2" => 3`, `"1,2,3" => 6`, `"1,2:3" => 6`
 - 앞의 기본 구분자(쉼표, 콜론) 외에 커스텀 구분자를 지정할 수 있다.
@@ -46,21 +45,21 @@
 
 ### Extractor 커스텀파트, 표현식파트 분리
 
-- [ ] 커스텀 문자열이 있는 부분을 반환
-- [ ] 표현식 문자열이 있는 부분을 반환
+- [x] 커스텀 문자열이 있는 부분을 반환 `Extractor.extractCustomPart`
+- [x] 표현식 문자열이 있는 부분을 `Extractor.extractExpressionPart`
 
 ### Pattern 기준 확인
 
-- [ ] 첫 번째 기준자가 존재하는지 확인
-- [ ] 두 번째 기준자가 존재하는지 확인
-- [ ] 커스텀 구분자가 존재할 수 있는 지 확인
+- [x] 첫 번째 기준자가 존재하는지 확인 `Pattern.isStartHeadPattern`
+- [x] 두 번째 기준자가 존재하는지 확인 `Pattern.hasTailPattern`
+- [x] 커스텀 구분자가 존재할 수 있는 지 확인 `Pattern.hasPatterns`
 
 ### Validate-패턴 부분
 
-- [ ] 기준자가 정확히 입력되었는지 검사
-- [ ] 구분자가 공백인지 검사
-- [ ] 하나의 구분자만 들어왔는지 검사
-- [ ] 구분자가 숫자인지 검사
+- [x] 기준자가 정확히 입력되었는지 검사 `ValidatePattern.isStartHeadPattern` `ValidatePattern.validTailPattern`
+- [x] 구분자가 공백인지 검사 `ValidatePattern.validIsBlank`
+- [x] 하나의 구분자만 들어왔는지 검사 `ValidatePattern.vaildIsSingle`
+- [x] 구분자가 숫자인지 검사 `ValidatePattern.validIsNumber`
 
 ### Validate-표현식 부분
 
