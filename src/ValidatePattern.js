@@ -16,6 +16,7 @@ class ValidatePattern {
       throw new Error('첫 번째 기준자를 잘못 입력하셨습니다.');
     return this;
   }
+
   //Pattern클래스를 활용해 Tail이 존재하는지 검사
   //구분자에 Tail이 들어갈 수 있기 때문에 존재하는 것만으로 검사
   validTailPattern() {
@@ -23,10 +24,18 @@ class ValidatePattern {
       throw new Error('두 번째 기준자를 잘못 입력하셨습니다.');
     return this;
   }
+
   //Extractor 활용해 구분자부분을 가져옴, 값이 비었는지 검사
   validIsBlank() {
     if (Extractor.extractCustomDelimiter(this.customPart).length === 0)
       throw new Error('커스텀 구분자가 비어았습니다');
+    return this;
+  }
+
+  //Extractor 활용해 구분자부분을 가져옴, 구분자가 두개 이상 들어갔는지 확인
+  validCustomDelim() {
+    if (Extractor.extractCustomDelimiter(this.string).length > 1)
+      throw new Error('커스텀 구분자를 하나만 입력하세요');
     return this;
   }
 
@@ -35,7 +44,10 @@ class ValidatePattern {
     if (this.customPart.length === 0) return;
     //검사시작
     // this.validHeadPattern().validTailPattern();
-    this.validHeadPattern().validTailPattern().validIsBlank();
+    this.validHeadPattern()
+      .validTailPattern()
+      .validIsBlank()
+      .validCustomDelim();
   }
 }
 export default ValidatePattern;
