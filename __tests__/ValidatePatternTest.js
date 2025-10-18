@@ -2,6 +2,7 @@ import ValidatePattern from '../src/ValidatePattern.js';
 
 const valid = new ValidatePattern();
 
+//validHeadPattern 테스트
 const validHeadPattern = valid.validHeadPattern.name;
 describe(validHeadPattern, () => {
   test('에러발생 테스트', () => {
@@ -14,6 +15,7 @@ describe(validHeadPattern, () => {
   });
 });
 
+//validTailPattern 테스트
 const validTailPattern = valid.validTailPattern.name;
 describe(validTailPattern, () => {
   test('에러발생 테스트', () => {
@@ -22,6 +24,7 @@ describe(validTailPattern, () => {
   });
 });
 
+//validIsBlank테스트
 const validIsBlank = valid.validIsBlank.name;
 describe(validIsBlank, () => {
   test('에러발생 테스트', () => {
@@ -30,6 +33,7 @@ describe(validIsBlank, () => {
   });
 });
 
+//vaildIsSingle
 const vaildIsSingle = valid.vaildIsSingle.name;
 describe(vaildIsSingle, () => {
   test('에러발생 테스트', () => {
@@ -37,6 +41,8 @@ describe(vaildIsSingle, () => {
     expect(() => validator.vaildIsSingle()).toThrow(Error);
   });
 });
+
+//validIsNumber 테스트
 const validIsNumber = valid.validIsNumber.name;
 describe(validIsNumber, () => {
   test('에러발생 테스트', () => {
@@ -44,6 +50,8 @@ describe(validIsNumber, () => {
     expect(() => validator.validIsNumber()).toThrow(Error);
   });
 });
+
+//종합테스트
 const validate = valid.validate.name;
 describe(validate, () => {
   test('종합 테스트', () => {
