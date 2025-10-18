@@ -48,6 +48,11 @@ class ValidateExpression {
   validate() {
     //표현식 파트가 없으면 검증할 필요없음, ""는 0임
     if (this.expPart.length === 0) return;
+    //체이닝
+    this.vaildIsStartNumber()
+      .vaildIsEndNumber()
+      .validMultipleDelim()
+      .validIsInDelimList();
   }
 }
 
