@@ -1,5 +1,6 @@
 import Pattern from './Pattern.js';
 import Extractor from './Extractor.js';
+import { isNumber } from './utils/Utils.js';
 
 //구분자 패턴 부분을 유효성 검사하는 클래스
 class ValidatePattern {
@@ -43,7 +44,7 @@ class ValidatePattern {
   // 숫자라면 구분자 지정 못하게함
   validIsNumber() {
     const customDelim = Extractor.extractCustomDelimiter(this.customPart);
-    if (Number.isInteger(Number(customDelim)))
+    if (isNumber(customDelim))
       throw new Error('숫자를 구분자로 지정할 수 없습니다');
     return this;
   }
