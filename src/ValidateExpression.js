@@ -12,6 +12,7 @@ class ValidateExpression {
       throw new Error('식의 첫 부분은 숫자여야 합니다');
     return this;
   }
+
   //표현식의 끝 부분이 숫자인지 판별 리팩토링때 utils로 뺄 생각 중
   //1,2,3, Error
   vaildIsEndNumber() {
@@ -19,6 +20,19 @@ class ValidateExpression {
       throw new Error('식은 숫자로 끝나야 합니다');
     return this;
   }
+
+  //공백과 숫자로 이루어진 문자열을 분해하여 숫자인지 검증
+  // 공백이 아닌 문자는 구분자 리스트에 없는 문자
+  validIsInDelimList() {
+    const tokenList = this.string.split('');
+    tokenList.forEach((token) => {
+      if (token !== ' ' && !Number.isInteger(Number(token)))
+        throw new Error('지정된 구분자가 아닙니다');
+    });
+    return this;
+  }
+
+  //메소드 체이닝
   validate() {
     //표현식 파트가 없으면 검증할 필요없음, ""는 0임
     if (this.string.length === 0) return;
