@@ -33,8 +33,8 @@ class ValidatePattern {
   }
 
   //Extractor 활용해 구분자부분을 가져옴, 구분자가 두개 이상 들어갔는지 확인
-  validCustomDelim() {
-    if (Extractor.extractCustomDelimiter(this.string).length > 1)
+  vaildIsSingle() {
+    if (Extractor.extractCustomDelimiter(this.customPart).length > 1)
       throw new Error('커스텀 구분자를 하나만 입력하세요');
     return this;
   }
@@ -44,10 +44,7 @@ class ValidatePattern {
     if (this.customPart.length === 0) return;
     //검사시작
     // this.validHeadPattern().validTailPattern();
-    this.validHeadPattern()
-      .validTailPattern()
-      .validIsBlank()
-      .validCustomDelim();
+    this.validHeadPattern().validTailPattern().validIsBlank().vaildIsSingle();
   }
 }
 export default ValidatePattern;

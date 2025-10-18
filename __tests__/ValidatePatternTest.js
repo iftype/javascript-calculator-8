@@ -30,6 +30,14 @@ describe(validIsBlank, () => {
   });
 });
 
+const vaildIsSingle = valid.vaildIsSingle.name;
+describe(vaildIsSingle, () => {
+  test('에러발생 테스트', () => {
+    const validator = new ValidatePattern('//??\\n');
+    expect(() => validator.vaildIsSingle()).toThrow(Error);
+  });
+});
+
 const validate = valid.validate.name;
 describe(validate, () => {
   test('종합 테스트', () => {
