@@ -32,3 +32,22 @@ describe(indexOfNumber, () => {
     expect(result).toBe(5);
   });
 });
+
+const extractCustomPart = Extractor.extractCustomPart.name;
+describe(extractCustomPart, () => {
+  test(`성공 테스트`, () => {
+    const element = '//*\\n1,2,3';
+    const result = Extractor.extractCustomPart(element);
+    expect(result).toBe('//*\\n');
+  });
+  test(`못찾았을때 테스트`, () => {
+    const element = '//*\\n';
+    const result = Extractor.extractCustomPart(element);
+    expect(result).toBe('//*\\n');
+  });
+  test(`못찾았을때 테스트`, () => {
+    const element = '';
+    const result = Extractor.extractCustomPart(element);
+    expect(result).toBe('');
+  });
+});
