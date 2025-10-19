@@ -21,6 +21,7 @@ describe('문자열 계산기', () => {
   test.each([
     ['', '결과 : 0'],
     ['1,2', '결과 : 3'],
+    ['//n\\n', '결과 : 0'],
     ['1,2,3', '결과 : 6'],
     ['//_\\n1_2:4', '결과 : 7'],
     ['//\\\\n1\\2:5', '결과 : 8'],
@@ -84,6 +85,14 @@ describe('문자열 계산기', () => {
 
   test('커스텀 구분자 입력 안함', async () => {
     const inputs = ['//\n1,2,3'];
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.run()).rejects.toThrow('[ERROR]');
+  });
+  test('공백처리', async () => {
+    const inputs = [' //n\\n1', '//b\\n 1,2', '//b\\n1,2 '];
     mockQuestions(inputs);
 
     const app = new App();

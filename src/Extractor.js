@@ -18,7 +18,7 @@ class Extractor {
   // 숫자를 찾지 못했다면 받은 문자를 리턴한다
   static extractExpressionPart(string) {
     const findNum = this.indexOfNumber(string);
-    return findNum === -1 ? string : string.slice(findNum);
+    return findNum === -1 ? '' : string.slice(findNum);
   }
 
   // 커스텀파트를 탐색하여 HEAD_PATTERN이 끝나는 지점부터 TAIL_PATTERN 까지의 문자열을 가져온다

@@ -52,7 +52,7 @@ class ValidateExpression {
   // 메소드 체이닝
   validate() {
     // 표현식 파트가 없으면 검증할 필요없음, ""는 0임
-    if (this.expPart.length === 0) return;
+    if (this.expPart === '') return;
     // 체이닝
     this.validIsStartNumber()
       .validIsEndNumber()
