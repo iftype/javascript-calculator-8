@@ -1,12 +1,12 @@
+import { isNumber } from '../utils/utils.js';
 import Delimiter from '../Delimiter.js';
-import { isNumber } from '../utils/Utils.js';
 
 //표현식 부분 검사하는 클래스
 class ValidateExpression {
   //자기 자신을 리턴받기위해 멤버변수를 가짐
-  constructor(expPart) {
+  constructor(expPart, delimiter) {
     this.expPart = expPart || '';
-    this.delimiter = new Delimiter();
+    this.delimiter = delimiter;
   }
 
   //표현식의 첫 부분이 숫자인지 판별
@@ -38,6 +38,7 @@ class ValidateExpression {
   // 공백이 아닌 문자는 구분자 리스트에 없는 문자
   validIsInDelimList() {
     const tokenList = this.delimiter.splitDelimExpression(this.expPart);
+    console.log(tokenList);
     tokenList.forEach((token) => {
       if (token !== ' ' && !isNumber(token))
         throw new Error('지정된 구분자가 아닙니다');

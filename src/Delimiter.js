@@ -2,9 +2,7 @@
 //싱글톤 적용, 커스텀 구분자가 초기화되는 현상 때문
 class Delimiter {
   constructor() {
-    if (Delimiter.instance) return Delimiter.instance;
     this.delimList = [',', ':'];
-    Delimiter.instance = this;
   }
   //해당 문자가 구분자인지 확인
   hasDelimiterString(delim) {

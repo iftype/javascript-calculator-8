@@ -1,4 +1,5 @@
 import ValidateExpression from '../src/Validate/ValidateExpression.js';
+import Delimiter from '../src/Delimiter.js';
 
 const valid = new ValidateExpression();
 
@@ -27,12 +28,13 @@ describe(validIsEndNumber, () => {
 //표현식 검증, 연속 문자 테스트
 const validMultipleDelim = valid.validMultipleDelim.name;
 describe(validMultipleDelim, () => {
+  const delimiter = new Delimiter();
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression('1,,2;3');
+    const validator = new ValidateExpression('1,,2;3', delimiter);
     expect(() => validator.validMultipleDelim()).toThrow(Error);
   });
   test('패스 테스트', () => {
-    const validator = new ValidateExpression('1,2,3');
+    const validator = new ValidateExpression('1,2,3', delimiter);
     expect(() => validator.validMultipleDelim()).not.toThrow();
   });
 });
@@ -40,12 +42,14 @@ describe(validMultipleDelim, () => {
 //표현식 검증, 특수문자 있는지 테스트
 const validIsInDelimList = valid.validIsInDelimList.name;
 describe(validIsInDelimList, () => {
+  const delimiter = new Delimiter();
+  delimiter.addDelimiter(',');
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression('1,2;3');
+    const validator = new ValidateExpression('1,2;3', delimiter);
     expect(() => validator.validIsInDelimList()).toThrow(Error);
   });
   test('패스 테스트', () => {
-    const validator = new ValidateExpression('1,2,3');
+    const validator = new ValidateExpression('1,2,3', delimiter);
     expect(() => validator.validIsInDelimList()).not.toThrow();
   });
 });
