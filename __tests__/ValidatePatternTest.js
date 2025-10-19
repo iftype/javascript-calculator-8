@@ -19,7 +19,7 @@ describe(validHeadPattern, () => {
 const validTailPattern = valid.validTailPattern.name;
 describe(validTailPattern, () => {
   test('에러발생 테스트', () => {
-    const validator = new ValidatePattern('//d\t1,2,3');
+    const validator = new ValidatePattern('//d\t');
     expect(() => validator.validTailPattern()).toThrow(Error);
   });
 });

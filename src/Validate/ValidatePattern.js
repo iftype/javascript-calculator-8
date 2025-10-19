@@ -19,9 +19,9 @@ class ValidatePattern {
   }
 
   //Pattern클래스를 활용해 Tail이 존재하는지 검사
-  //구분자에 Tail이 들어갈 수 있기 때문에 존재하는 것만으로 검사
+  //구분자에 잘라서 넣기 때문에 끝나는게 테일과 같아야함
   validTailPattern() {
-    if (!Pattern.hasTailPattern(this.customPart))
+    if (!Pattern.isEndTailPattern(this.customPart))
       throw new Error('두 번째 기준자를 잘못 입력하셨습니다.');
     return this;
   }
