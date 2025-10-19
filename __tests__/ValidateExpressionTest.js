@@ -3,24 +3,24 @@ import ValidateExpression from '../src/ValidateExpression.js';
 const valid = new ValidateExpression();
 
 //표현식검증 숫자로 시작하는지 테스트
-const vaildIsStartNumber = valid.vaildIsStartNumber.name;
-describe(vaildIsStartNumber, () => {
+const validIsStartNumber = valid.validIsStartNumber.name;
+describe(validIsStartNumber, () => {
   test('에러발생 테스트', () => {
     const validator = new ValidateExpression(',1,2,3');
-    expect(() => validator.vaildIsStartNumber()).toThrow(Error);
+    expect(() => validator.validIsStartNumber()).toThrow(Error);
   });
   test('패스 테스트', () => {
     const validator = new ValidateExpression('1,2,3,,');
-    expect(() => validator.vaildIsStartNumber()).not.toThrow();
+    expect(() => validator.validIsStartNumber()).not.toThrow();
   });
 });
 
 //표현식검증 숫자로 끝나는지 테스트
-const vaildIsEndNumber = valid.vaildIsEndNumber.name;
-describe(vaildIsEndNumber, () => {
+const validIsEndNumber = valid.validIsEndNumber.name;
+describe(validIsEndNumber, () => {
   test('에러발생 테스트', () => {
     const validator = new ValidateExpression('1,2,3,');
-    expect(() => validator.vaildIsEndNumber()).toThrow(Error);
+    expect(() => validator.validIsEndNumber()).toThrow(Error);
   });
 });
 

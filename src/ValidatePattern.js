@@ -34,13 +34,13 @@ class ValidatePattern {
   }
 
   //Extractor 활용해 구분자부분을 가져옴, 구분자가 두개 이상 들어갔는지 확인
-  vaildIsSingle() {
+  validIsSingle() {
     if (Extractor.extractCustomDelimiter(this.customPart).length > 1)
       throw new Error('커스텀 구분자를 하나만 입력하세요');
     return this;
   }
 
-  // Extractor 활용해 구분자를 부분을 가져옴, 숫자인지 확인하고 (리팩토링때 utills로 뺴자)
+  // Extractor 활용해 구분자를 부분을 가져옴, 숫자인지 확인하고
   // 숫자라면 구분자 지정 못하게함
   validIsNumber() {
     const customDelim = Extractor.extractCustomDelimiter(this.customPart);
@@ -52,12 +52,11 @@ class ValidatePattern {
   validate() {
     // 커스텀 파트가 없으면 검증할 필요 없음
     if (this.customPart.length === 0) return;
-    //검사시작
-    // this.validHeadPattern().validTailPattern();
+
     this.validHeadPattern()
       .validTailPattern()
       .validIsBlank()
-      .vaildIsSingle()
+      .validIsSingle()
       .validIsNumber();
   }
 }
