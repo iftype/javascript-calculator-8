@@ -4,12 +4,10 @@ import ValidatePattern from './ValidatePattern.js';
 import ValidateExpression from './ValidateExpression.js';
 //실행 과정을 담기 위한 클래스
 class Calculator {
-  //APP.js에서 입력값을 받아 생성
   constructor(userInput) {
     this.delimiter = new Delimiter();
     this.userInput = userInput || '';
   }
-  //실행부
   calculate() {
     const customDelimPart = Extractor.extractCustomPart(this.userInput);
     const customDelim = Extractor.extractCustomDelimiter(customDelimPart);
