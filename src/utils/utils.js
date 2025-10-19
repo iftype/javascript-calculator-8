@@ -1,4 +1,4 @@
-import { SPACE } from '../constants/patternConstants.js';
+import { SPACE } from '../constants/constant.js';
 // 안전한 정수인지 검사
 export function isNumber(params) {
   if (

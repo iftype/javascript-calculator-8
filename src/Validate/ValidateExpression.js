@@ -1,5 +1,5 @@
 import { isNumber } from '../utils/utils.js';
-import { SPACE, DOUBLE_SPACE } from '../constants/patternConstants.js';
+import { SPACE, DOUBLE_SPACE } from '../constants/constant.js';
 import Delimiter from '../Delimiter.js';
 // 표현식 부분 검사하는 클래스
 class ValidateExpression {

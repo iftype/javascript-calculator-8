@@ -1,5 +1,5 @@
 import Pattern from './Pattern.js';
-import { HEAD_PATTERN, TAIL_PATTERN } from './constants/patternConstants.js';
+import { HEAD_PATTERN, TAIL_PATTERN } from './constants/constant.js';
 import { isNumber } from './utils/utils.js';
 
 class Extractor {

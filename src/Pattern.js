@@ -1,4 +1,4 @@
-import { HEAD_PATTERN, TAIL_PATTERN } from './constants/patternConstants.js';
+import { HEAD_PATTERN, TAIL_PATTERN } from './constants/constant.js';
 
 class Pattern {
   // 문자열이 HEAD_PATTERN으로 시작하는지 확인
