@@ -11,11 +11,10 @@ class Calculator {
   }
 
   calculate() {
-    // 1. 커스텀 문자파트 , 커스텀 문자, 표현식 파트 추출
+    // 1. 커스텀 문자파트, 커스텀 문자, 표현식 파트 추출
     const customDelimPart = Extractor.extractCustomPart(this.userInput);
     const customDelim = Extractor.extractCustomDelimiter(customDelimPart);
     const expressionPart = Extractor.extractExpressionPart(this.userInput);
-
     // 2. 커스텀 구분자 추가, 없다면 ""
     this.delimiter.addDelimiter(customDelim);
 

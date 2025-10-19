@@ -1,6 +1,5 @@
 import { SPACE } from './constants/patternConstants.js';
 
-SPACE;
 // 구분자들을 관리하는 클래스
 // 싱글톤 적용, 커스텀 구분자가 초기화되는 현상 때문
 class Delimiter {
