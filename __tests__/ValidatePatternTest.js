@@ -1,4 +1,4 @@
-import ValidatePattern from '../src/ValidatePattern.js';
+import ValidatePattern from '../src/Validate/ValidatePattern.js';
 
 const valid = new ValidatePattern();
 

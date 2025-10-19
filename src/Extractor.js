@@ -11,8 +11,7 @@ class Extractor {
   //숫자를 만나는 곳을 찾아 첫 부분부터 잘라낸다, 만약 숫자를 찾아내지 못한다면 원래 문자열을 리턴한다
   static extractCustomPart(string) {
     const findNum = this.indexOfNumber(string);
-    if (findNum === -1) return string;
-    return string.slice(0, findNum);
+    return findNum === -1 ? string : string.slice(0, findNum);
   }
 
   //커스텀파트를 탐색하여 HEAD_PATTERN이 끝나는 지점부터 TAIL_PATTERN 까지의 문자열을 가져온다

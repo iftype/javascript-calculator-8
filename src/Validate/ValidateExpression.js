@@ -1,5 +1,5 @@
-import Delimiter from './Delimiter.js';
-import { isNumber } from './utils/Utils.js';
+import Delimiter from '../Delimiter.js';
+import { isNumber } from '../utils/Utils.js';
 
 //표현식 부분 검사하는 클래스
 class ValidateExpression {

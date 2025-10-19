@@ -70,12 +70,12 @@
 
 ### Delimiter 구분자, 표현식에서 구분자들을 제거해줌
 
-- [ ] 커스텀 구분자를 구분자 배열에 추가 `Delimiter.addDelimiter()`
-- [ ] 표현식에서 구분자를 삭제 `Delimiter.splitDelimExpression()`
+- [x] 커스텀 구분자를 구분자 배열에 추가 `Delimiter.addDelimiter()`
+- [x] 표현식에서 구분자를 삭제 `Delimiter.splitDelimExpression()`
 
 ### Calculator 계산기, 총 합을 구해줌
 
-- [ ] 구분자를 제거한 숫자배열을 더 해줌 `Calculator.sumNumberList()`
+- [x] 구분자를 제거한 숫자배열을 더 해줌 `Calculator.sumNumberList()`
 
 ---
 

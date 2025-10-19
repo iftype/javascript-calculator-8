@@ -1,7 +1,7 @@
 import Extractor from './Extractor.js';
 import Delimiter from './Delimiter.js';
-import ValidatePattern from './ValidatePattern.js';
-import ValidateExpression from './ValidateExpression.js';
+import ValidatePattern from './Validate/ValidatePattern.js';
+import ValidateExpression from './Validate/ValidateExpression.js';
 //실행 과정을 담기 위한 클래스
 class Calculator {
   constructor(userInput) {

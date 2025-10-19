@@ -1,4 +1,4 @@
-import ValidateExpression from '../src/ValidateExpression.js';
+import ValidateExpression from '../src/Validate/ValidateExpression.js';
 
 const valid = new ValidateExpression();
 
