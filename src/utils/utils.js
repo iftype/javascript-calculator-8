@@ -1,9 +1,10 @@
+import { SPACE } from '../constants/patternConstants.js';
 // 안전한 정수인지 검사
 export function isNumber(params) {
   if (
     params === null ||
     params === undefined ||
-    params === ' ' ||
+    params === SPACE ||
     params === ''
   )
     return false;
@@ -15,7 +16,7 @@ export function isNumber(params) {
 export function sumTokenList(tokenList) {
   return tokenList
     .join('')
-    .split(' ')
+    .split(SPACE)
     .map(Number)
     .reduce((acc, cur) => acc + cur, 0);
 }

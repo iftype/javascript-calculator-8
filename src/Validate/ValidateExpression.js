@@ -1,6 +1,6 @@
 import { isNumber } from '../utils/utils.js';
+import { SPACE, DOUBLE_SPACE } from '../constants/patternConstants.js';
 import Delimiter from '../Delimiter.js';
-
 // 표현식 부분 검사하는 클래스
 class ValidateExpression {
   // 자기 자신을 리턴받기위해 멤버변수를 가짐
@@ -31,7 +31,7 @@ class ValidateExpression {
   // 공백이 두개나오면 특수문자가 연속 두 번 나온것
   validMultipleDelim() {
     const tokenList = this.delimiter.splitDelimExpression(this.expPart);
-    if (tokenList.join('').includes('  ')) {
+    if (tokenList.join('').includes(DOUBLE_SPACE)) {
       throw new Error('구분자를 연속해서 사용했습니다');
     }
     return this;
@@ -42,7 +42,7 @@ class ValidateExpression {
   validIsInDelimList() {
     const tokenList = this.delimiter.splitDelimExpression(this.expPart);
     tokenList.forEach((token) => {
-      if (token !== ' ' && !isNumber(token)) {
+      if (token !== SPACE && !isNumber(token)) {
         throw new Error('지정된 구분자가 아닙니다');
       }
     });
