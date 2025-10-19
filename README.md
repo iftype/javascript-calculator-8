@@ -45,37 +45,37 @@
 
 ### Extractor 커스텀파트, 표현식파트 분리
 
-- [x] 커스텀 문자열이 있는 부분을 반환 `Extractor.extractCustomPart`
-- [x] 표현식 문자열이 있는 부분을 `Extractor.extractExpressionPart`
+- [x] 커스텀 문자열이 있는 부분을 반환 `Extractor.extractCustomPart()`
+- [x] 표현식 문자열이 있는 부분을 `Extractor.extractExpressionPart()`
 
 ### Pattern 기준 확인
 
-- [x] 첫 번째 기준자가 존재하는지 확인 `Pattern.isStartHeadPattern`
-- [x] 두 번째 기준자가 존재하는지 확인 `Pattern.hasTailPattern`
-- [x] 커스텀 구분자가 존재할 수 있는 지 확인 `Pattern.hasPatterns`
+- [x] 첫 번째 기준자가 존재하는지 확인 `Pattern.isStartHeadPattern()`
+- [x] 두 번째 기준자가 존재하는지 확인 `Pattern.hasTailPattern()`
+- [x] 커스텀 구분자가 존재할 수 있는 지 확인 `Pattern.hasPatterns()`
 
 ### Validate-패턴 부분
 
-- [x] 기준자가 정확히 입력되었는지 검사 `ValidatePattern.isStartHeadPattern` `ValidatePattern.validTailPattern`
-- [x] 구분자가 공백인지 검사 `ValidatePattern.validIsBlank`
-- [x] 하나의 구분자만 들어왔는지 검사 `ValidatePattern.vaildIsSingle`
-- [x] 구분자가 숫자인지 검사 `ValidatePattern.validIsNumber`
+- [x] 기준자가 정확히 입력되었는지 검사 `ValidatePattern.isStartHeadPattern()` `ValidatePattern.validTailPattern()`
+- [x] 구분자가 공백인지 검사 `ValidatePattern.validIsBlank()`
+- [x] 하나의 구분자만 들어왔는지 검사 `ValidatePattern.vaildIsSingle()`
+- [x] 구분자가 숫자인지 검사 `ValidatePattern.validIsNumber()`
 
 ### Validate-표현식 부분
 
-- [ ] 표현식이 숫자로 시작하는지 검사
-- [ ] 표현식이 숫자로 끝나는지 검사
-- [ ] 구분자를 연속해서 사용했는지 검사
-- [ ] 기본구분자와 커스텀 구분자만 사용했는지 검사
+- [x] 표현식이 숫자로 시작하는지 검사 `ValidateExpression.ValidateExpression.  ValidateExpression.validIsStartNumber() `
+- [x] 표현식이 숫자로 끝나는지 `ValidateExpression.  validIsEndNumber() `
+- [x] 구분자를 연속해서 사용했는지 검사 `ValidateExpression.validMultipleDelim()`
+- [x] 기본구분자와 커스텀 구분자만 사용했는지 검사`ValidateExpression.validIsInDelimList()`
 
 ### Delimiter 구분자, 표현식에서 구분자들을 제거해줌
 
-- [ ] 커스텀 구분자를 구분자 배열에 추가
-- [ ] 표현식에서 구분자를 삭제
+- [ ] 커스텀 구분자를 구분자 배열에 추가 `Delimiter.addDelimiter()`
+- [ ] 표현식에서 구분자를 삭제 `Delimiter.splitDelimExpression()`
 
 ### Calculator 계산기, 총 합을 구해줌
 
-- [ ] 구분자를 제거한 숫자배열을 더 해줌
+- [ ] 구분자를 제거한 숫자배열을 더 해줌 `Calculator.sumNumberList()`
 
 ---
 
