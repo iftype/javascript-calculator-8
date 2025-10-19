@@ -14,19 +14,19 @@ class Calculator {
     const customDelim = Extractor.extractCustomDelimiter(customDelimPart);
     const expressionPart = Extractor.extractExpressionPart(this.userInput);
 
+    // 2. 커스텀 구분자 추가, 없다면 ""
     this.delimiter.addDelimiter(customDelim);
 
     // 3. 커스텀 문자파트, 표현식 파트 검사 시작
     new Validate(expressionPart, customDelimPart, this.delimiter).validate();
 
     const tokenList = this.delimiter.splitDelimExpression(expressionPart);
-    return this.sumNumberList(tokenList);
+    return Calculator.sumNumberList(tokenList);
   }
 
   // 표현식 문자열을 구분자로 분리함
   // 공백이 포함된 토큰배열을 받아 조립하여 더함
   static sumNumberList(tokenList) {
-    console.log(tokenList.join(''));
     return tokenList
       .join('')
       .split(' ')
