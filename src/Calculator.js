@@ -18,7 +18,11 @@ class Calculator {
     this.delimiter.addDelimiter(customDelim);
 
     // 3. 커스텀 문자파트, 표현식 파트 검사 시작
-    new Validate(expressionPart, customDelimPart, this.delimiter).validate();
+    new Validate({
+      customDelimPart,
+      expressionPart,
+      delimiter: this.delimiter,
+    }).validate();
 
     const tokenList = this.delimiter.splitDelimExpression(expressionPart);
     return Calculator.sumNumberList(tokenList);

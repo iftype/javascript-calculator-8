@@ -41,7 +41,6 @@ class ValidateExpression {
   // 공백이 아닌 문자는 구분자 리스트에 없는 문자
   validIsInDelimList() {
     const tokenList = this.delimiter.splitDelimExpression(this.expPart);
-    console.log(tokenList);
     tokenList.forEach((token) => {
       if (token !== ' ' && !isNumber(token)) {
         throw new Error('지정된 구분자가 아닙니다');

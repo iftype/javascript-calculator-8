@@ -4,7 +4,7 @@ import Delimiter from '../Delimiter.js';
 
 class Validate {
   // 의존성 주입Delimiter
-  constructor(expressionPart, customDelimPart, delimiter) {
+  constructor({ expressionPart, customDelimPart, delimiter }) {
     this.expressionPart = expressionPart;
     this.customDelimPart = customDelimPart;
     this.delimiter = delimiter;
