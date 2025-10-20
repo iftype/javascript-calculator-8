@@ -27,6 +27,14 @@ describe('문자열 계산기', () => {
     ['//\\\\n1\\2:5', '결과 : 8'],
     ['//n\\n1n2n3:4', '결과 : 10'],
     ['//;\\n1;22;3', '결과 : 26'],
+    //이스케이프추가
+    ['//\\\\n0\\1', '결과 : 1'],
+    ['//\\n\\n0\n1', '결과 : 1'],
+    ['//\\t\\n0\\t1', '결과 : 1'],
+    ['//\\r\\n0\\r1', '결과 : 1'],
+    ['//\\v\\n0\\v1', '결과 : 1'],
+    ['//\\f\\n0\\f1', '결과 : 1'],
+    ["//\\'\\n0\\'1", '결과 : 1'],
   ])('테스트 시작 : %s, 나와야 하는 %s', async (input, output) => {
     const inputs = [input];
     mockQuestions(inputs);
@@ -92,7 +100,7 @@ describe('문자열 계산기', () => {
     await expect(app.run()).rejects.toThrow('[ERROR]');
   });
   test('공백처리', async () => {
-    const inputs = [' //n\\n1', '//b\\n 1,2', '//b\\n1,2 '];
+    const inputs = [' //n\\n1', '//n\\n 1,2', '// \\n1 2', '//m\\n1, 2 '];
     mockQuestions(inputs);
 
     const app = new App();

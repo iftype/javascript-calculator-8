@@ -1,7 +1,7 @@
 import Pattern from '../Pattern.js';
 import Extractor from '../Extractor.js';
 import { isNumber } from '../utils/utils.js';
-
+import { convertEscapes } from '../utils/escape.js';
 // 구분자 패턴 부분을 유효성 검사하는 클래스
 class ValidatePattern {
   // 생성자로 커스텀 파트 부분을 받음
@@ -31,7 +31,7 @@ class ValidatePattern {
 
   // Extractor 활용해 구분자부분을 가져옴, 값이 비었는지 검사
   validIsBlank() {
-    if (this.customDelim.length === 0) {
+    if (this.customDelim.trim() === '') {
       throw new Error('커스텀 구분자가 비어았습니다');
     }
     return this;
@@ -39,7 +39,7 @@ class ValidatePattern {
 
   // Extractor 활용해 구분자부분을 가져옴, 구분자가 두개 이상 들어갔는지 확인
   validIsSingle() {
-    if (this.customDelim.length > 1) {
+    if (convertEscapes(this.customDelim).length > 1) {
       throw new Error('커스텀 구분자를 하나만 입력하세요');
     }
     return this;
@@ -47,6 +47,7 @@ class ValidatePattern {
 
   // Extractor 활용해 구분자를 부분을 가져옴, 숫자인지 확인하고
   // 숫자라면 구분자 지정 못하게함
+
   validIsNumber() {
     if (isNumber(this.customDelim)) {
       throw new Error('숫자를 구분자로 지정할 수 없습니다');
@@ -58,7 +59,6 @@ class ValidatePattern {
     // 커스텀 파트가 없으면 검증할 필요 없음
     if (this.customPart.length === 0) return;
     this.customDelim = Extractor.extractCustomDelimiter(this.customPart);
-    console.log(this.customDelim);
 
     this.validHeadPattern()
       .validTailPattern()

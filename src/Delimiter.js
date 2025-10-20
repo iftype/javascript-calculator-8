@@ -1,3 +1,4 @@
+import { convertEscapes } from './utils/escape.js';
 import { SPACE } from './constants/constant.js';
 
 // 구분자들을 관리하는 클래스
@@ -14,16 +15,17 @@ class Delimiter {
 
   // 구분자 추가
   addDelimiter(delim) {
-    this.delimList.push(delim);
+    //실제문자로넣음
+    this.delimList.push(convertEscapes(delim));
   }
 
   // 표현식에 있는 기호들 중 구분자를 찾아 공백으로 만들어줌
   // 공백으로 만든 다음 유효성 검사 할 생각
   splitDelimExpression(string) {
-    return string
-      .split('')
-      .map((token) => (this.hasDelimiterString(token) ? SPACE : token));
+    const escapeArray = Array.from(convertEscapes(string));
+    return escapeArray.map((token) =>
+      this.hasDelimiterString(token) ? SPACE : token,
+    );
   }
 }
-
 export default Delimiter;
