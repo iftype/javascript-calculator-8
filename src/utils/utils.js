@@ -1,13 +1,10 @@
 import { SPACE } from '../constants/constant.js';
 // 안전한 정수인지 검사
 export function isNumber(params) {
-  if (
-    params === null ||
-    params === undefined ||
-    params === SPACE ||
-    params === ''
-  )
+  if (params === null || params === undefined || params === SPACE) return false;
+  if (params.trim() === '') {
     return false;
+  }
   return Number.isSafeInteger(Number(params));
 }
 
