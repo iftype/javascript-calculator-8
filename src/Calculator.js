@@ -13,17 +13,17 @@ class Calculator {
   calculate() {
     // 1. 커스텀 문자파트, 커스텀 문자, 표현식 파트 추출
     const customDelimPart = Extractor.extractCustomPart(this.userInput);
-    const customDelim = Extractor.extractCustomDelimiter(customDelimPart);
     const expressionPart = Extractor.extractExpressionPart(this.userInput);
-    // 2. 커스텀 구분자 추가, 없다면 ""
-    this.delimiter.addDelimiter(customDelim);
 
-    // 3. 커스텀 문자파트, 표현식 파트 검사 시작
+    // 2.커스텀 구분자를 추가하기 전에 Validate안에서 새로운 구분자 객체를 생성해서 검증먼저함
     new Validate({
       customDelimPart,
       expressionPart,
-      delimiter: this.delimiter,
     }).validate();
+
+    // 3. 검증이 끝나면 Delimiter 객체의 구분자 배열에 커스텀 구분자 추가
+    const customDelim = Extractor.extractCustomDelimiter(customDelimPart);
+    this.delimiter.addDelimiter(customDelim);
 
     // 4. 공백과 숫자로 만든 표현식 계산
     const tokenList = this.delimiter.splitDelimExpression(expressionPart);

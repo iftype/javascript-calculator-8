@@ -1,17 +1,24 @@
 import ValidateExpression from '../src/Validate/ValidateExpression.js';
 import Delimiter from '../src/Delimiter.js';
 
-const valid = new ValidateExpression();
+//제목용
+const testD = new Delimiter();
+const valid = new ValidateExpression({
+  expressionPart: '1,,2;3',
+  customDelimPart: '',
+});
 
 //표현식검증 숫자로 시작하는지 테스트
 const validIsStartNumber = valid.validIsStartNumber.name;
 describe(validIsStartNumber, () => {
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression(',1,2,3');
+    const validTest = { expressionPart: ',1,2,3,' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validIsStartNumber()).toThrow(Error);
   });
   test('패스 테스트', () => {
-    const validator = new ValidateExpression('1,2,3,,');
+    const validTest = { expressionPart: '1,2,3,' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validIsStartNumber()).not.toThrow();
   });
 });
@@ -20,7 +27,8 @@ describe(validIsStartNumber, () => {
 const validIsEndNumber = valid.validIsEndNumber.name;
 describe(validIsEndNumber, () => {
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression('1,2,3,');
+    const validTest = { expressionPart: '1,2,3,' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validIsEndNumber()).toThrow(Error);
   });
 });
@@ -30,11 +38,13 @@ const validMultipleDelim = valid.validMultipleDelim.name;
 describe(validMultipleDelim, () => {
   const delimiter = new Delimiter();
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression('1,,2;3', delimiter);
+    const validTest = { expressionPart: '1,,2;3' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validMultipleDelim()).toThrow(Error);
   });
   test('패스 테스트', () => {
-    const validator = new ValidateExpression('1,2,3', delimiter);
+    const validTest = { expressionPart: '1,2,3' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validMultipleDelim()).not.toThrow();
   });
 });
@@ -45,11 +55,13 @@ describe(validIsInDelimList, () => {
   const delimiter = new Delimiter();
   delimiter.addDelimiter(',');
   test('에러발생 테스트', () => {
-    const validator = new ValidateExpression('1,2;3', delimiter);
+    const validTest = { expressionPart: '1,2;3' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validIsInDelimList()).toThrow(Error);
   });
   test('패스 테스트', () => {
-    const validator = new ValidateExpression('1,2,3', delimiter);
+    const validTest = { expressionPart: '1,2,3' };
+    const validator = new ValidateExpression(validTest);
     expect(() => validator.validIsInDelimList()).not.toThrow();
   });
 });

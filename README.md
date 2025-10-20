@@ -43,39 +43,47 @@
 
 ## ✏️구현할 기능 목록
 
-### Extractor 커스텀파트, 표현식파트 분리
-
-- [x] 커스텀 문자열이 있는 부분을 반환 `Extractor.extractCustomPart()`
-- [x] 표현식 문자열이 있는 부분을 `Extractor.extractExpressionPart()`
-
 ### Pattern 기준 확인
 
-- [x] 첫 번째 기준자가 존재하는지 확인 `Pattern.isStartHeadPattern()`
-- [x] 두 번째 기준자가 존재하는지 확인 `Pattern.hasTailPattern()`
-- [x] 커스텀 구분자가 존재할 수 있는 지 확인 `Pattern.hasPatterns()`
+- [x] 헤드 패턴으로 시작하는지 확인 `isStartHeadPattern()`
+- [x] 꼬리 패턴으로 끝나는지 확인 `hasTailPattern()`
+- [x] 꼬리패턴으로 끝나는지 확인 `isEndTailPattern()`
+- [x] 패턴이 존재할 수 있는지 확인` hasPatterns()`
+
+### Extractor 커스텀파트, 표현식파트 분리
+
+- [x] 커스텀 문자부를 가져옴 `.extractCustomPart()`
+- [x] 표현식 문자열이 있는 부분을 가져옴 extractExpressionPart()
+- [x] 패턴을 제외한 커스텀 문자부를 가져옴 extractCustomDelimiter
 
 ### Validate-패턴 부분
 
-- [x] 기준자가 정확히 입력되었는지 검사 `ValidatePattern.isStartHeadPattern()` `ValidatePattern.validTailPattern()`
-- [x] 구분자가 공백인지 검사 `ValidatePattern.validIsBlank()`
-- [x] 하나의 구분자만 들어왔는지 검사 `ValidatePattern.vaildIsSingle()`
-- [x] 구분자가 숫자인지 검사 `ValidatePattern.validIsNumber()`
+- [x] 기준자가 정확히 입력되었는지 검사 `isStartHeadPattern() validTailPattern()`
+
+### Validate-구분자 부분
+
+- [x] 구분자가 공백인지 검사 `validIsBlank()`
+- [x] 하나의 구분자만 들어왔는지 검사 `.vaildIsSingle()`
+- [x] 구분자가 숫자인지 검사 `validIsNumber()`
 
 ### Validate-표현식 부분
 
-- [x] 표현식이 숫자로 시작하는지 검사 `ValidateExpression.ValidateExpression.  ValidateExpression.validIsStartNumber() `
-- [x] 표현식이 숫자로 끝나는지 `ValidateExpression.  validIsEndNumber() `
-- [x] 구분자를 연속해서 사용했는지 검사 `ValidateExpression.validMultipleDelim()`
-- [x] 기본구분자와 커스텀 구분자만 사용했는지 검사`ValidateExpression.validIsInDelimList()`
+- [x] 표현식이 숫자로 시작하는지 검사 validIsStartNumber()
+- [x] 표현식이 숫자로 끝나는지 validIsEndNumber()`
+- [x] 연속해서 사용했는지 검사 validMultipleDelim()
+- [x] 기본구분자와 커스텀 구분자만 사용했는지
+      검사validIsInDelimList()
 
-### Delimiter 구분자, 표현식에서 구분자들을 제거해줌
+### Delimiter 구분자, 표현식에서 구분자들을
 
 - [x] 커스텀 구분자를 구분자 배열에 추가 `Delimiter.addDelimiter()`
 - [x] 표현식에서 구분자를 삭제 `Delimiter.splitDelimExpression()`
 
-### Calculator 계산기, 총 합을 구해줌
+### uitlls - 공통 함수
 
-- [x] 구분자를 제거한 숫자배열을 더 해줌 `Calculator.sumNumberList()`
+- [x] 숫자인지 확인, 문자로 된 숫자도 숫자로 취급한다 `isNumber`
+
+- [x] 구분자를 제거한 숫자배열을 더 해줌 `sumTokenList`()`-[ ]   이스케이프 시퀀스로 변환해준다`convertEscapes`
 
 ---
 
@@ -86,7 +94,6 @@
 > 사용자는 입력을 실수할 수 있으며 예상되는 실수는 다음과 같다.
 
 ```
-
 /;\n1,2,3  기준자를 오타낸 경우
 //\n1,2,3  커스텀 구분자를 입력 안한 경우
 // \n      커스텀 구분자가 공백일 경우
@@ -95,10 +102,11 @@
 - 커스텀 구분자의 기준
 
 ```
-
 //**\n   숫자를 제외한 하나의 문자로만 커스텀 구분자를 만들 수 있다.
-// \n    공백은 커스텀 문자로 받을 수 없다.
+//\n\n   이스케이프 시퀀스는 하나의 문자로 취급한다
+// \n    커스텀 문자를 사용하지 않으려면 기준자도 없어야한다
 //\\n    "\"를 포함한 특수문자를 받을 수 있어야 한다
+//🎈\n  하지만 이모티콘은 불가능하다
 ```
 
 - 표현식 파트
@@ -108,7 +116,8 @@
 ```
 //?\n1,2?3  기본 구분자와 커스텀 구분자는 같이 나올 수 있다
 1,,,3       구분자는 두 개 이상 연속해서 나올 수 없다.
-,1,2,3,     양수로 시작해서 양수로 끝나야한다.
+1,2,3     양수로 시작해서 양수로 끝나야한다.
+1 2        표현식 사이에 공백은 허용하지 않는다
 ```
 
 ---
@@ -120,15 +129,24 @@
 ## 프로젝트 구조
 
 ```
-src
+📦__tests__
+ ┣ 📜ApplicationTest.js
+ ┣ 📜DelimiterTest.js
+ ┣ 📜ExtractorTest.js
+ ┣ 📜PatternTest.js
+ ┣ 📜ValidateExpressionTest.js
+ ┗ 📜ValidatePatternTest.js
+📦src
  ┣ 📂constants            # 상수 폴더
  ┃ ┗ 📜constant.js        # 상수들을 관리하는 파일
  ┣ 📂utils                # 유틸 폴더
+ ┃ ┣ 📜escape.js          # 이스케이프 시퀀스 처리 함수
  ┃ ┗ 📜utils.js           # 공통 기능 함수
  ┣ 📂Validate             # 유효성 검사 모음
  ┃ ┣ 📜Validate.js             # 검사 프로세스
- ┃ ┣ 📜ValidateExpression.js   # 표현식에 대한 검증
- ┃ ┗ 📜ValidatePattern.js      # 구분부에 대한 검증
+ ┃ ┣ 📜ValidatePattern.js      # 구분부에 대한 검증
+ ┃ ┣ 📜ValidateDelim.js        # 구분자에 대한 검증
+ ┃ ┗ 📜ValidateExpression.js   # 표현식에 대한 검증
  ┣ 📜App.js               # 프로그램 실행의 시작점
  ┣ 📜Calculator.js        # 프로그램 전체 프로세스
  ┣ 📜Delimiter.js         # 구분자 관리 클래스
@@ -277,7 +295,7 @@ src
 
 ### 구분자 배열
 
-- 의존성 주입 `Dependency Injection` 사용
+- 의존성 주입 `Dependency Injection` 사용 -
 
 > 통칭 DI,런타임시에 관계를 동적으로 주입
 
@@ -309,15 +327,12 @@ new Validate({
 
 ```js
 //Validate.js
-import Delimiter from '../Delimiter.js';
-
-class Validate {
-  constructor({ expressionPart, customDelimPart, delimiter }) {
-    this.expressionPart = expressionPart;
-    this.customDelimPart = customDelimPart;
-    this.delimiter = delimiter;
+ 커스텀문자추출(커스텀파트) {
+    if (!패턴이있는가(커스텀파트)) return 커스텀파트;
+    const 여기서부터 = 첫번째기준자를찾은위치 + 길이
+    const 여기까지자름 = 두번째기준자의위치;
+    return 커스텀파트.잘라내기(여기서부터, 여기까지자름);
   }
-}
 ```
 
 구조 분해 할당 `Destructuring assignment` 사용하면
@@ -335,9 +350,20 @@ describe('테스트 DI', () => {
 
 테스트도 위와 같이 인스턴스를 넘겨서 테스트 진행해야한다
 
+> 현재 DI는 리펙토링으로 삭제됨
+>
+> `삭제 이유 - 의존성을 가지는 이유가 커스텀 구분자가 추가된 구분자리스트의 배열을 접근하기 위해 의존성을 가지는데, 이보다 내부에서 새 객체 생성하는게 더 좋음`
+
 ---
 
 ### 표현식 검증
+
+```js
+  static 커스텀파트(string) {
+    const findNum = this.indexOfNumber(string);
+    return findNum === -1 ? string : string.slice(0, findNum);
+  }
+```
 
 - 꼼수
 
@@ -360,15 +386,12 @@ describe('테스트 DI', () => {
 
 1. 허락되지 않은 구분자를 찾아낼 수 있다
 2. 양 끝이 문자인지 확인 가능하다
-3. 구분자가 연속으로 나오는지 확인 가능하다`join("").includes("  ")`
-4. 두 자릿 수 이상의 수도 계산이 가능하다 `join("").split(" ")`
-5. 한 자리의 모든 특수문자`-` `\\`를 해결 할 수 있다
+3. 구분자가 연속으로 나오는지 확인 가능하다join("").includes(" ")
+4. 두 자릿 수 이상의 수도 계산이 가능하다 join("").split(" ")
+5. length 가 1인 특수문자를 해결 할 수 있다
+6. 이스케이프 시퀀스 중 \n, \r, \t, \v, \f,\\,를 해결할 수 있다
 
-하지만
-
-1. 두 자리 이상의 구분자를 받을 수 없다
-2. 구분자가 이스케이프 시퀀스인 경우를 해결할 수 없다
-3. 구분자가 공백인 경우를 해결할 수 없다
+> 구현 실패 : 이스케이프 시퀀스 중 \ooo \xhh 가 구분자로 들어올 때
 
 ---
 
